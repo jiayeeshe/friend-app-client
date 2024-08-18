@@ -1,7 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
-require("dotenv").config()
 
 
 function App() {
@@ -13,7 +12,7 @@ function App() {
 
 
   const addFriend = () => {
-    Axios.post(`${process.env.SERVER_URL}/addfriend`, { 
+    Axios.post(`${process.env.REACT_APP_SERVER_URL}/addfriend`, { 
       name: name, 
       age : age, 
     }).then((response) => {
@@ -25,7 +24,7 @@ function App() {
 
   const deleteFriend = (id) => {
     console.log(id);
-    Axios.delete(`${process.env.SERVER_URL}/deletefriend/${id}`
+    Axios.delete(`${process.env.REACT_APP_SERVER_URL}/deletefriend/${id}`
     ).then(() => {setFriendlist(
       friendList.filter((friend) => friend._id !== id)
     )})
@@ -34,7 +33,7 @@ function App() {
   const updateFriend = (id, age) => {
     const newAge = prompt("Please enter the new age");
 
-    Axios.put(`${process.env.SERVER_URL}/updatefriend`, { 
+    Axios.put(`${process.env.REACT_APP_SERVER_URL}/updatefriend`, { 
       id : id,
       age : newAge,
     }).then(() => {
@@ -47,7 +46,7 @@ function App() {
   }
 
   useEffect(() => {
-    Axios.get(`${process.env.SERVER_URL}/read`).then((response) => {
+    Axios.get(`${process.env.REACT_APP_SERVER_URL}/read`).then((response) => {
       setFriendlist(response.data);
     }).catch((err) => {
       console.log(err);
