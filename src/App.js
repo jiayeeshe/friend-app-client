@@ -70,7 +70,6 @@ function App() {
           <div className='friend'>
             <h3>Name: {friend.name}</h3> 
             <h3>Age: {friend.age}</h3>
-            <h3>id: {friend._id}</h3>
           </div>
           <button onClick={()=> {
             updateFriend(friend._id)}}>Update</button>
