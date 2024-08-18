@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
-
+require("dotenv").config()
 
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
 
 
   const addFriend = () => {
-    Axios.post('https://friend-application-e3a237c1329a.herokuapp.com/addfriend', { 
+    Axios.post(`${process.env.SERVER_URL}/addfriend`, { 
       name: name, 
       age : age, 
     }).then((response) => {
@@ -25,7 +25,7 @@ function App() {
 
   const deleteFriend = (id) => {
     console.log(id);
-    Axios.delete(`https://friend-application-e3a237c1329a.herokuapp.com/deletefriend/${id}`
+    Axios.delete(`${process.env.SERVER_URL}/deletefriend/${id}`
     ).then(() => {setFriendlist(
       friendList.filter((friend) => friend._id !== id)
     )})
@@ -34,7 +34,7 @@ function App() {
   const updateFriend = (id, age) => {
     const newAge = prompt("Please enter the new age");
 
-    Axios.put('https://friend-application-e3a237c1329a.herokuapp.com/updatefriend', { 
+    Axios.put(`${process.env.SERVER_URL}/updatefriend`, { 
       id : id,
       age : newAge,
     }).then(() => {
@@ -47,7 +47,7 @@ function App() {
   }
 
   useEffect(() => {
-    Axios.get('https://friend-application-e3a237c1329a.herokuapp.com/read').then((response) => {
+    Axios.get(`${process.env.SERVER_URL}/read`).then((response) => {
       setFriendlist(response.data);
     }).catch((err) => {
       console.log(err);
