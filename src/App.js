@@ -76,12 +76,14 @@ function App() {
   <div className="App">
       <div className="upper-side">
       <div className="header"> 
+        <div id="friendLogo">
         <img src="/friend.png" alt="Icon" /> 
-        <p>Friend app</p>
-        <p id="sendEmail">
+        <span>Friend app</span>
+        </div>
+        <div id="sendEmail">
          <img src="/gmail.png" alt="gmail logo"></img> 
         <button onClick={sendEmail}>SEND LIST</button>
-        </p>
+        </div>
       </div>
       <div className="inputs">
         <input type="text" onChange={(event) => {setName(event.target.value)}} placeholder="Friend name..."/>
