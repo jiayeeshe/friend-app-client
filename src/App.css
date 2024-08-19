@@ -115,8 +115,7 @@ body {
 }
 .friend{
   width: 400px;
-  height: 100px;
-
+  height: 70px;
   background-color: aquamarine;
   color: black;
   /* display: flex; */
