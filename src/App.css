@@ -9,14 +9,47 @@ body {
   padding: 0;
 }
 
-.inputs {
+.upper-side {
   height: 400px;
   width: 100%;
+  background-color: rgb(96, 174, 161);
+}
+
+.header {
+  font-family:'Courier New', Courier, monospace;
+  font-size: 15px;
+  font-weight: bolder;
+  height:50px;
+  display:flex;
+  flex-direction: row;
+}
+
+.header p{
+  margin-left: 5px;
+}
+
+.header img {
+  border-radius: '10px';
+  border: 2px solid black 
+}
+
+#sendEmail {
+  margin-left: 800px;
+  display: flex;
+  flex-direction: row;
+}
+
+.header p img{
+  width: 20px;
+  height: 20px;
+}
+
+
+.inputs {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: rgb(96, 174, 161);
 }
 
 .inputs input {
@@ -36,6 +69,7 @@ body {
   border-radius: 10px;
   font-size: 15px;
 }
+
 
 .listOfFriends{
   display: flex;

@@ -45,6 +45,24 @@ function App() {
     })
   }
 
+  const sendEmail = () => {
+
+    const email = prompt("Enter your email");
+    
+    if( email!=="" && email!==null ){
+    Axios.post(`${process.env.REACT_APP_SERVER_URL}/sendEmail`, {
+      email : email,
+    }).then(() => {
+      alert("EMAIL SENT SUCCESSFULLY");
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+  else {
+    alert("Email is blank!")
+  }
+  }
+
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_SERVER_URL}/read`).then((response) => {
       setFriendlist(response.data);
@@ -53,13 +71,24 @@ function App() {
     })
   }, [])
   
-
+  // 
   return (
   <div className="App">
+      <div className="upper-side">
+      <div className="header"> 
+        <img src="/friend.png" alt="Icon" /> 
+        <p>Friend app</p>
+        <p id="sendEmail">
+         <img src="/gmail.png" alt="gmail logo"></img> 
+        <button onClick={sendEmail}>SEND LIST</button>
+        </p>
+      </div>
       <div className="inputs">
         <input type="text" onChange={(event) => {setName(event.target.value)}} placeholder="Friend name..."/>
         <input type="number" onChange={(event) => {setAge(event.target.value)}} placeholder="Friend age..."/>
         <button onClick={addFriend}> SAVE FRIEND</button>
+        
+      </div>
       </div>
 
       <div className='listOfFriends'>
@@ -79,7 +108,6 @@ function App() {
         )
         })}
       </div>
-  
 
   </div>
 
